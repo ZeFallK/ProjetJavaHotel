@@ -1,2 +1,3 @@
-package PACKAGE_NAME;public class GestionHotel {
+public class GestionHotel {
+
 }
