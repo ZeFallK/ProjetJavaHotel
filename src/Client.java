@@ -1,12 +1,12 @@
 public class Client {
     private String prenom;
     private String nom;
-    private int clientID;
+    //private int clientID;
 
-    public Client(String prenom, String nom, int clientID) {
+    public Client(String prenom, String nom) {//, int clientID
         this.prenom = prenom;
         this.nom = nom;
-        this.clientID = clientID;
+        //this.clientID = clientID;
     }
     public String getPrenom() {
         return prenom;
@@ -24,11 +24,11 @@ public class Client {
         this.nom = nom;
     }
 
-    public int getClientID() {
-        return clientID;
-    }
-
-    public void setClientID(int clientID) {
-        this.clientID = clientID;
-    }
+//   // public int getClientID() {
+//        return clientID;
+//    }
+//
+//    public void setClientID(int clientID) {
+//        this.clientID = clientID;
+//    }
 }

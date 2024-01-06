@@ -1,12 +1,14 @@
-public class Repas {
+public class Repas  {
     private double prix;
     private String plat;
-    private String dessert;
+    private int  numRepas;
 
-    public Repas(double prix, String plat, String dessert){
+
+
+    public Repas(double prix, String plat, int numRepas){
         this.prix = prix;
         this.plat = plat;
-        this.dessert = dessert;
+        this.numRepas = numRepas;
     }
 
     public double getPrix() {
@@ -25,11 +27,14 @@ public class Repas {
         this.plat = plat;
     }
 
-    public String getDessert() {
-        return dessert;
+
+    public int getNumRepas() {
+        return numRepas;
     }
 
-    public void setDessert(String dessert) {
-        this.dessert = dessert;
+    public void setNumRepas(int numRepas) {
+        this.numRepas = numRepas;
     }
+
+
 }

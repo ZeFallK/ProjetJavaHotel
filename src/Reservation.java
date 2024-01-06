@@ -1,28 +1,31 @@
 import java.util.Date;
 public class Reservation {
-    private int numReservation;
+    private static int numReservation = 1;
+    private int reservID;
     private Client client;
     private Chambre chambre;
     private Repas repas;
+    private int dureeSejour;
     private Date dateEntree;
     private Date dateSortie;
 
-    public Reservation(int numReservation, Client client, Chambre chambre, Repas repas, Date dateEntree, Date dateSortie) {
-        this.numReservation = numReservation;
+
+    public Reservation(Client client, Chambre chambre, Repas repas, int dureeSejour) {
+        this.reservID = numReservation++;
         this.client = client;
         this.chambre = chambre;
         this.repas = repas;
-        this.dateEntree = dateEntree;
-        this.dateSortie = dateSortie;
+        this.dureeSejour = dureeSejour;
+//
     }
 
-    public int getNumReservation() {
-        return numReservation;
+    public int getReservID() {
+        return this.reservID;
     }
-
-    public void setNumReservation(int numReservation) {
-        this.numReservation = numReservation;
-    }
+//
+//    public void setNumReservation(int numReservation) {
+//        this.numReservation = numReservation;
+//    }
 
     public Client getClient() {
         return client;
@@ -48,19 +51,27 @@ public class Reservation {
         this.repas = repas;
     }
 
-    public Date getDateEntree() {
-        return dateEntree;
+    public int getDureeSejour() {
+        return dureeSejour;
     }
 
-    public void setDateEntree(Date dateEntree) {
-        this.dateEntree = dateEntree;
+    public void setDureeSejour(int dureeSejour) {
+        this.dureeSejour = dureeSejour;
     }
 
-    public Date getDateSortie() {
-        return dateSortie;
-    }
-
-    public void setDateSortie(Date dateSortie) {
-        this.dateSortie = dateSortie;
-    }
+//    public Date getDateEntree() {
+//        return dateEntree;
+//    }
+//
+//    public void setDateEntree(Date dateEntree) {
+//        this.dateEntree = dateEntree;
+//    }
+//
+//    public Date getDateSortie() {
+//        return dateSortie;
+//    }
+//
+//    public void setDateSortie(Date dateSortie) {
+//        this.dateSortie = dateSortie;
+//    }
 }
