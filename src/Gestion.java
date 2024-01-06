@@ -26,15 +26,15 @@ public class Gestion {
     public void createReservation() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Entrez le prénom du client: ");
+        System.out.print("Veuillez entrer votre prénom : ");
         String prenom = scanner.nextLine();
-        System.out.print("Entrez le nom du client: ");
+        System.out.print("Veuillez entrer votre nom: ");
         String nom = scanner.nextLine();
 
         System.out.println("Voici la liste des chambres disponibles :");
         for (Chambre chambre : rooms) {
             if (chambre.isDispo()) {
-                System.out.println(chambre.getNumChambre());
+                System.out.println(chambre.getNumChambre() + "  " + chambre.getNomChambre());
             }
         }
 
@@ -42,7 +42,7 @@ public class Gestion {
         Chambre chambreChoisie = null;
 
         while (!chambreDisponible) {
-            System.out.print("Choisissez le numéro de la chambre: ");
+            System.out.print("Veuillez choisir le numéro de la chambre: ");
             int numChambre = scanner.nextInt();
             chambreChoisie = getChambreByNum(numChambre);
 
@@ -50,7 +50,7 @@ public class Gestion {
                 chambreDisponible = true;
                 chambreChoisie.setDispo(false);
             } else {
-                System.out.println("La chambre sélectionnée n'est pas disponible. Veuillez choisir une autre chambre.");
+                System.out.println("La chambre sélectionnée n'est plus disponible. Veuillez choisir une autre chambre.");
             }
         }
 
@@ -64,9 +64,9 @@ public class Gestion {
             System.out.println(repas.getNumRepas() + " - " + repas.getPlat());
         }
 
-        System.out.println("Le repas 1: Burger coûte 13 euros");
-        System.out.println("Le repas 2: Poulet-Yassa coûte 13 euros");
-        System.out.println("Le repas 3: Pizza coûte 13 euros");
+        System.out.println("Le repas 1: Le Plat du jour vous coûte 13 euros");
+        System.out.println("Le repas 2: Le Poulet Yassa vous coûte 13 euros");
+        System.out.println("Le repas 3: Le Club Sandwich vous coûte 13 euros");
         System.out.print("Choisissez le numéro du repas: ");
         int numRepas = scanner.nextInt();
         Repas repasChoisi = getRepasById(numRepas);
@@ -131,6 +131,24 @@ public class Gestion {
         } else {
             System.out.println("Aucune réservation trouvée avec le numéro " + reservID + ". Veuillez vérifier le numéro de réservation.");
         }
+    }
+    public void imprimerFacture(int reservFID) {
+        Reservation reservation = getReservationById(reservFID);
+        if (reservation == null) {
+            System.out.println("Réservation non trouvée.");
+            return;
+        }
+
+        float prixChambre = reservation.getChambre().getPrixC() * reservation.getDureeSejour();
+        float prixRepas = reservation.getRepas().getPrixR() * reservation.getDureeSejour(); // Supposons que le repas est pris chaque jour
+        float total = prixChambre + prixRepas;
+
+        // Afficher la facture
+        System.out.println("Détails de la facture pour la réservation numéro " + reservFID);
+        System.out.println("Client: " + reservation.getClient().getPrenom() + " " + reservation.getClient().getNom());
+        System.out.println("Chambre numéro: " + reservation.getChambre().getNumChambre() + " - Prix: " + prixChambre + " (pour " + reservation.getDureeSejour() + " jours)");
+        System.out.println("Repas: " + reservation.getRepas().getPlat() + " - Prix: " + prixRepas + " (pour " + reservation.getDureeSejour() + " jours)");
+        System.out.println("Total à payer: " + total);
     }
 
     private Chambre getChambreByNum(int numChambre) {

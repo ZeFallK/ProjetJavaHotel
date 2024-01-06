@@ -4,14 +4,21 @@ public class Main {
     public static void main(String[] args) {
         //config chambre
         Gestion gestion = new Gestion();
-        gestion.addChambre(new Chambre(1, true, 100, true));
-        gestion.addChambre(new Chambre(2, true, 100, true));
-        gestion.addChambre(new Chambre(3, true, 100, true));
-        gestion.addChambre(new Chambre(4, true, 100, true));
-        gestion.addChambre(new ChambreLuxe(5, true, 100, true, "WiFi"));
-        gestion.addChambre(new ChambreLuxe(6, true, 100, true, "Salle de bain effet pluie"));
-        gestion.addChambre(new ChambreLuxe(7, true, 100, true, "Frigo"));
-        gestion.addChambre(new ChambreLuxe(8, true, 100, true, "Carte parking"));
+        gestion.addChambre(new Chambre(1, "Chambre Classique", true, 100, true));
+        gestion.addChambre(new Chambre(2, "Chambre Classique",true, 100, true));
+        gestion.addChambre(new Chambre(3, "Chambre Classique",true, 100, true));
+        gestion.addChambre(new Chambre(4, "Chambre Classique",true, 100, true));
+        gestion.addChambre(new ChambreLuxe(5, "Chambre Luxe",true, 200, true, "WiFi"));
+        gestion.addChambre(new ChambreLuxe(6, "Chambre Luxe",true, 200, true, "Salle de bain effet pluie"));
+        gestion.addChambre(new ChambreLuxe(7, "Chambre Luxe",true, 200, true, "Frigo"));
+        gestion.addChambre(new ChambreLuxe(8, "Chambre Luxe",true, 200, true, "Carte parking"));
+
+        gestion.addRepas(new Repas(13, "Plat du jour", 1));
+        gestion.addRepas(new Repas(13, "Plat du jour", 2));
+        gestion.addRepas(new Repas(13, "Plat du jour", 3));
+       // Repas repas1 = new Repas(13, "Plat du jour", 1);
+        //Repas repas2 = new Repas(13, "Club Sandwich", 1);
+        //Repas repas3 = new Repas(13, "Poulet Yassa", 1);
 
         Scanner scanner = new Scanner(System.in);
         int option;
@@ -19,12 +26,13 @@ public class Main {
 
         while (progCont) {
             System.out.println("Bienvenue dans notre hôtel\n");
-            System.out.println("1. Je veux effectuer une réservation");
-            System.out.println("2. Je veux modifier ma reservation");
-            System.out.println("3. Je veux annuler ma réservation");
-            System.out.println("4. Je veux avoir la liste des réservations");
-            System.out.println("5. Je veux me renseigner sur les services et sur la selection de repas ");
-            System.out.println("6. Quitter");
+            System.out.println("1. Je souhaite effectuer une réservation");
+            System.out.println("2. Je souhaite modifier ma reservation");
+            System.out.println("3. Je souhaite annuler ma réservation");
+            System.out.println("4. Je souhaite avoir la liste des réservations");
+            System.out.println("5. Je souhaite être renseigné sur les services et sur la sélection des repas ");
+            System.out.println("6. Je souhaite réclamer ma facture");
+            System.out.println("7. Quitter");
             System.out.print("Veuillez sélectionner une option:");
 
             option = scanner.nextInt();
@@ -38,22 +46,23 @@ public class Main {
                     gestion.modifierReservation(reservID);
                     break;
                 case 3:
-                    System.out.println("3. Je veux annuler ma réservation");
-                    System.out.print("Entrez le numéro de réservation que vous souhaitez annuler: ");
+                    System.out.println("3. Je souhaite annuler ma réservation");
+                    System.out.print("Veuillez entrez le numéro de réservation que vous souhaitez annuler: ");
                     int reservAID = scanner.nextInt();
                     gestion.annulerReservation(reservAID);
                     break;
                 case 4:
-                    System.out.println("4. Je veux avoir la liste des réservations");
+                    System.out.println("4. Je souhaite avoir la liste des réservations");
                     gestion.listerReservations();
+
                     break;
                 case 5:
-                    System.out.println("5. Je veux me renseigner sur les services et sur la selection de repas ");
-                    System.out.println("Ok, pour quel type de chambre souhaitez-vous vous informer ?");
+                    System.out.println("5. Je souhaite être renseigné sur les services et sur la selection des repas ");
+                    System.out.println("Très bien, pour quel type de chambre souhaitez-vous vous informer ?");
                     System.out.println("1. Pour la Chambre Classique!");
                     System.out.println("2. Pour la Chambre Luxueuse !");
                     System.out.println("3. Pour les Repas !");
-                    System.out.print("Entrez votre choix: ");
+                    System.out.print("Veuillez entrer votre choix: ");
                     int choix5 = scanner.nextInt();
                     switch (choix5) {
                         case 1:
@@ -71,7 +80,7 @@ public class Main {
                         case 3:
                             System.out.println("Complétez votre séjour dans nos chambres en choisissant un délicieux repas pour chaque étape de votre journée.");
                             System.out.println("Nous vous proposons un menu varié avec une sélection de plats:");
-                            System.out.println("Selection Plats (8 euros):  Burger/Frites classique, Poulet yassa, Pizza");
+                            System.out.println("Selection Plats (8 euros):  Plat du jour, Poulet Yassa, Club sandwich");
                             System.out.println("Vous pouvez choisir un plat par personne. Le total sera ajouté à votre facture lors de votre séjour.\n");
                             break;
                         default:
@@ -79,9 +88,13 @@ public class Main {
                             break;
                     }
                     break;
-                case 6:
+                case 7:
                     progCont = false;
                     System.out.println("Merci d'avoir utilisé notre logiciel. A bientôt !");
+                    break;
+                case 6:
+                    int reservFID = scanner.nextInt();
+                    gestion.imprimerFacture(reservFID);
                     break;
                 default:
                     System.out.println("Choix invalide. Merci de bien vouloir réessayer");

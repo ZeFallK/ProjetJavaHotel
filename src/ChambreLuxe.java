@@ -1,9 +1,9 @@
 public class ChambreLuxe extends Chambre {
 
-    private String service; //wifi, mini-bar, etc
+    private String service;
 
-    public ChambreLuxe(int numChambre, boolean isLitSimple, float prix, boolean isDispo, String service) {
-        super(numChambre, isLitSimple, prix, isDispo);
+    public ChambreLuxe(int numChambre, String nomChambre, boolean isLitSimple, float prixC, boolean isDispo, String service) {
+        super(numChambre,nomChambre, isLitSimple, prixC, isDispo);
 
         this.service = service;
     }

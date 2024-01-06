@@ -1,40 +1,30 @@
 public class Repas  {
-    private double prix;
+    private float prixR;
     private String plat;
     private int  numRepas;
 
-
-
-    public Repas(double prix, String plat, int numRepas){
-        this.prix = prix;
+    public Repas(float prix, String plat, int numRepas){
+        this.prixR = prix;
         this.plat = plat;
         this.numRepas = numRepas;
     }
 
-    public double getPrix() {
-        return prix;
+    public float getPrixR() {
+        return prixR;
     }
-
-    public void setPrix(double prix) {
-        this.prix = prix;
+    public void setPrixR(float prix) {
+        this.prixR = prix;
     }
-
     public String getPlat() {
         return plat;
     }
-
     public void setPlat(String plat) {
         this.plat = plat;
     }
-
-
     public int getNumRepas() {
         return numRepas;
     }
-
     public void setNumRepas(int numRepas) {
         this.numRepas = numRepas;
     }
-
-
 }
