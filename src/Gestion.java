@@ -108,7 +108,7 @@ public class Gestion {
             System.out.println("Détails actuels de la réservation :");
             System.out.println("Client : " + reservation.getClient().getPrenom() + " " + reservation.getClient().getNom());
             System.out.println("Chambre : " + reservation.getChambre().getNumChambre());
-            System.out.println("Repas : " + reservation.getRepas());
+            System.out.println("Repas : " + reservation.getRepas().getPlat());
             System.out.println("Durée : " + reservation.getDureeSejour() + " jours");
 
             // Demander à l'utilisateur s'il souhaite modifier la réservation
@@ -196,7 +196,7 @@ public class Gestion {
                 System.out.println("Numéro de réservation : " + reserv.getReservID() +
                         ", Client : " + reserv.getClient().getPrenom() + " " + reserv.getClient().getNom() +
                         ", Chambre : " + reserv.getChambre().getNumChambre() +
-                        ", Repas : " + reserv.getRepas() +
+                        ", Repas : " + reserv.getRepas().getPlat() +
                         ", Durée : " + reserv.getDureeSejour() + " jours");
             }
         }

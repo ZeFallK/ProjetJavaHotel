@@ -14,11 +14,9 @@ public class Main {
         gestion.addChambre(new ChambreLuxe(8, "Chambre Luxe",true, 200, true, "Carte parking"));
 
         gestion.addRepas(new Repas(13, "Plat du jour", 1));
-        gestion.addRepas(new Repas(13, "Plat du jour", 2));
-        gestion.addRepas(new Repas(13, "Plat du jour", 3));
-       // Repas repas1 = new Repas(13, "Plat du jour", 1);
-        //Repas repas2 = new Repas(13, "Club Sandwich", 1);
-        //Repas repas3 = new Repas(13, "Poulet Yassa", 1);
+        gestion.addRepas(new Repas(13, "Club Sandwich", 2));
+        gestion.addRepas(new Repas(13, "Poulet Yassa", 3));
+
 
         Scanner scanner = new Scanner(System.in);
         int option;
@@ -93,6 +91,8 @@ public class Main {
                     System.out.println("Merci d'avoir utilisé notre logiciel. A bientôt !");
                     break;
                 case 6:
+                    System.out.println("3. Je souhaite réclamer ma facture");
+                    System.out.print("Veuillez entrez le numéro de réservation pour laquelle vous souhaitez une facture: ");
                     int reservFID = scanner.nextInt();
                     gestion.imprimerFacture(reservFID);
                     break;
