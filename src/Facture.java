@@ -20,9 +20,6 @@ public class Facture implements Serializable {
         return 0.0f;
     }
 
-    // pourquoi pas affiche fact
-
-
     public Client getClient() {
         return client;
     }

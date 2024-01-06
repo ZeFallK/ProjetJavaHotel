@@ -16,16 +16,12 @@ public class Reservation {
         this.chambre = chambre;
         this.repas = repas;
         this.dureeSejour = dureeSejour;
-//
+
     }
 
     public int getReservID() {
         return this.reservID;
     }
-//
-//    public void setNumReservation(int numReservation) {
-//        this.numReservation = numReservation;
-//    }
 
     public Client getClient() {
         return client;
@@ -59,19 +55,5 @@ public class Reservation {
         this.dureeSejour = dureeSejour;
     }
 
-//    public Date getDateEntree() {
-//        return dateEntree;
-//    }
-//
-//    public void setDateEntree(Date dateEntree) {
-//        this.dateEntree = dateEntree;
-//    }
-//
-//    public Date getDateSortie() {
-//        return dateSortie;
-//    }
-//
-//    public void setDateSortie(Date dateSortie) {
-//        this.dateSortie = dateSortie;
-//    }
+
 }

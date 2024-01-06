@@ -1,12 +1,12 @@
 import java.util.Scanner;
-
+import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
-        //config chambre
+
         Gestion gestion = new Gestion();
         gestion.addChambre(new Chambre(1, "Chambre Classique", true, 100, true));
         gestion.addChambre(new Chambre(2, "Chambre Classique",true, 100, true));
-        gestion.addChambre(new Chambre(3, "Chambre Classique",true, 100, true));
+        gestion.addChambre(new Chambre(3, "Chambre Classique",false, 100, true));
         gestion.addChambre(new Chambre(4, "Chambre Classique",true, 100, true));
         gestion.addChambre(new ChambreLuxe(5, "Chambre Luxe",true, 200, true, "WiFi"));
         gestion.addChambre(new ChambreLuxe(6, "Chambre Luxe",true, 200, true, "Salle de bain effet pluie"));
@@ -36,7 +36,12 @@ public class Main {
             option = scanner.nextInt();
             switch (option) {
                 case 1:
-                    gestion.createReservation();
+                    try {
+                        gestion.createReservation();
+                    } catch (ChambreNonDispoException e) {
+                        System.err.println(e.getMessage());
+                    }
+
                     break;
                 case 2:
                     System.out.print("Entrez l'ID de la réservation à modifier: ");

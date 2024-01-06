@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.IOException;
 
 public class Gestion {
     private List<Chambre> rooms = new ArrayList<>();
@@ -23,7 +24,7 @@ public class Gestion {
         meals.add(repas);
     }
 
-    public void createReservation() {
+    public void createReservation() throws ChambreNonDispoException {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Veuillez entrer votre prénom : ");
@@ -49,14 +50,16 @@ public class Gestion {
             if (chambreChoisie != null && chambreChoisie.isDispo()) {
                 chambreDisponible = true;
                 chambreChoisie.setDispo(false);
+
             } else {
                 System.out.println("La chambre sélectionnée n'est plus disponible. Veuillez choisir une autre chambre.");
             }
         }
 
         if (chambreDejaPrise(chambreChoisie)) {
-            System.out.println("La chambre est déjà réservée, nous pouvons vous proposer d'autres chambres semblables. Veuillez recommencer la réservation.");
-            return;
+            throw new ChambreNonDispoException("La chambre sélectionnée n'est plus disponible. Veuillez choisir une autre chambre.");
+            //System.out.println("La chambre est déjà réservée, nous pouvons vous proposer d'autres chambres semblables. Veuillez recommencer la réservation.");
+            //return;
         }
 
         System.out.println("Voici la liste des repas disponibles :");
